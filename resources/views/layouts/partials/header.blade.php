@@ -17,10 +17,10 @@
                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                     aria-label="Open user menu">
                     <span class="avatar avatar-sm">
-                        {{ name(auth()->user()->name, 'SYM-FL') }}
+                        {{ name(auth()->user()->user->name, 'SYM-FL') }}
                     </span>
                     <div class="d-none d-xl-block ps-2">
-                        <div>{{ name(auth()->user()->name) }}</div>
+                        <div>{{ name(auth()->user()->user->name) }}</div>
                         <div class="mt-1 small text-muted">{{ '@' . auth()->user()->username }}</div>
                     </div>
                 </a>

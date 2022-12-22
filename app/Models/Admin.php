@@ -6,10 +6,11 @@ use App\Traits\HasAccount;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Admin extends Model
 {
     use HasFactory, HasAccount;
 
+    protected $guarded = [];
     protected $casts = [
         'name' => 'array'
     ];

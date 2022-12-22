@@ -2,10 +2,9 @@
 
 namespace App\Providers;
 
-use App\Models\Citizen;
-use App\Models\Maternal;
-use App\Models\Nutritional;
-use App\Models\Worker;
+use App\Models\Account;
+use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,6 +27,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->bootMorphMap();
+    }
 
+    private function bootMorphMap(): void
+    {
+        Relation::enforceMorphMap([
+            'admin' => Admin::class,
+            'user'  => User::class,
+            'account' => Account::class,
+        ]);
     }
 }

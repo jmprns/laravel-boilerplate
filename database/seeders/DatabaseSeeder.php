@@ -18,11 +18,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // roles
-        $role1 = Role::create(['name' => 'admin']);
-
-
-        $admin = User::factory(['username' => 'admin', 'password' => Hash::make('admin123')])->create();
-        $admin->assignRole($role1);
+        $this->call([
+            ACLSeeder::class,
+            UserSeeder::class
+        ]);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DevController;
 use App\Http\Controllers\UserController;
@@ -25,22 +26,18 @@ Route::get('/dev', DevController::class);
 
 
 Route::group(['middleware' => 'auth:web'], function () {
+
     Route::get('/', DashboardController::class)->name('dashboard');
 
     Route::resource('users', UserController::class);
 
-
-
-
-
-
     Route::view('profile', 'profile.index')->name('profile');
-
-
 
     Route::group(['middleware' => 'role:admin'], function() {
         Route::view('actlogs', 'logs')->name('actlogs');
     });
 
-
+    Route::group(['prefix' => 'accounts'], function() {
+        Route::resource('admin', AdminController::class);
+    });
 });

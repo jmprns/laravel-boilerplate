@@ -3,12 +3,24 @@
 @section('page-title', 'System')
 
 @section('content')
-<div class="row gx-lg-4">
+    <div class="card">
+        <div class="row g-0">
 
-    @include('settings.navigation')
+            <div class="col-3 d-none d-md-block border-end">
+                <div class="card-body">
+                    @include('settings.navigation')
+                </div>
+            </div>
 
-    <div class="col-lg-9">
-      @include('settings.views')
+            <div class="col d-flex flex-column">
+                @switch($view)
+                    @case('account_profile')
+                        @include('settings.views.account')
+                        @break
+                    @default
+                        @break
+                @endswitch
+            </div>
+        </div>
     </div>
-  </div>
 @endsection
